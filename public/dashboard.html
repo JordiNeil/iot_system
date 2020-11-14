@@ -1,0 +1,93 @@
+<!DOCTYPE html >
+<head style="color:rgb(113, 238, 41);" style="size:300px" text-align:center>
+    <title>Test</title>
+
+    <link rel="stylesheet" href="test.css">
+</head>
+
+<body onload="alert('Bienvenido al Centro de control')">
+    <center>
+
+        <h1>Test de prueba</h1>
+    </center>
+
+    <div class="container">        
+        
+        <center>
+            <table class="table" style="width:100%;border: 3px;box-shadow: 3px; color:black; border-style: solid;">
+                <tr>
+                    <th>Sensor</th>
+                    <th>Temperatura</th>
+                    <th>Humedad</th>
+                </tr>
+                <tr>
+                    <center>
+                        <th>Sensor 1: </th>
+                        <th><p id="ts1"></p></th>
+                        <th><p id="hs1"></p></th>
+                    </center>
+                </tr>
+                <tr>
+                    <th>Sensor 2: </th>
+                    <th><p id="ts2"></p></th>
+                    <th><p id="hs2"></p></th>
+                </tr>
+                <tr>
+                    <th>Sensor 3: </th>
+                    <th><p id="ts3"></p></th>
+                    <th><p id="hs3"></p></th>
+                </tr>
+                <tr>
+                    <th>Sensor 4: </th>
+                    <th><p id="ts4"></p></th>
+                    <th><p id="hs4"></p></th>
+                </tr>
+                
+
+            </table>
+
+            <div class="form-group" style="height:30px;" >
+                <button type="button" id="reload_data">Reload data</button>                
+            </div>
+        </center>
+        <div>
+            <center>
+                <h2 style="height: 30px;">ACTUADORES</h2>
+            </center>            
+        </div>
+        <center>
+            <h2 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; text-shadow: 2px;">SENSORES</h2>
+            <table class="table" style="width:80%;border: 3px;box-shadow: 3px; color:black; border-style: solid;">
+                <tr>
+                    <th>Actuador</th>
+                    <th>ON</th>
+                    <th>OFF</th>
+                </tr>
+                <tr>                  
+                    <th>1</th>
+                    <th><input type="radio" name="actuador1" value= "A" onclick="activar_actuador('1')" id="act1"><br></th>
+                    <th><input type="radio" name="actuador1" value= "A" onclick="desactivar_actuador('1')" id="dact1"><br></th>
+                    <th><p id="act1_status"> </p></th>                                       
+                </tr>
+                <tr>
+                    <th>2</th>
+                    <th><input type="radio" name="actuador2" value= "A" onclick="activar_actuador('2')" id="act2"><br></th>
+                    <th><input type="radio" name="actuador2" value= "A" onclick="desactivar_actuador('2')" id="dact2"><br></th>                    
+                    <th><p id="act2_status"> </p></th>   
+                </tr>                                
+
+            </table>
+
+            <div class="form-group" style="height:30px;" >
+                <button type="button" id="reload_data">Reload data</button>                
+            </div>
+        </center>
+    </div>
+    
+    <script src="js/dashboard.js"></script>
+
+    <script src="jquery/jquery.min.js"></script>
+    <script src="jquery-easing/jquery.easing.min.js"></script>
+</body>
+
+</html>

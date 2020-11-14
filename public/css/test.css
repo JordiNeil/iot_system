@@ -1,0 +1,17 @@
+body{
+    background-color: lemonchiffon;
+}
+
+#t1{
+    font-family: sans-serif;
+    font-size:10px;
+}
+
+h1{
+    font-family: sans-serif;
+    font-size: 40px;;
+}
+
+.table{
+    background-color: grey;
+}
