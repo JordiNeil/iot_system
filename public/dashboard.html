@@ -1,14 +1,16 @@
 <!DOCTYPE html >
-<head style="color:rgb(113, 238, 41);" style="size:300px" text-align:center>
-    <title>Test</title>
-    <div style="border: 3px; box-shadow: 3px; border-color: darkcyan;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size:35px; background-color:dodgerblue">Jordi IOT, Internet of Things for newbies</div>
-
-    <link rel="stylesheet" href="test.css">
+<head>
+    <title>Test</title>    
+    
+    <link rel="stylesheet" href="css/dashboard.css">
 </head>
 
-<body onload="alert('Bienvenido al Centro de control')">
-    <center>
 
+
+<body onload="set_user_label()">
+    <p>Usuario activo: <span id="user_label"></span> </p>
+    
+    <center>
         <h1>CENTRO DE CONTROL</h1>
     </center>
 
@@ -62,23 +64,33 @@
         </div>
         <center>
             
-            <table class="table" style="width:80%;border: 3px;box-shadow: 3px; color:black; border-style: solid;">
+            <table class="table" style="width:80%;border: 3px;box-shadow: 3px; color:black; border-style: solid; background-color:cadetblue;">
                 <tr>
                     <th style="font-size:30px">Actuador</th>
                     <th style="font-size:30px">ON</th>
                     <th style="font-size:30px">OFF</th>
+                    <th style="font-size:30px">Estado actual</th>
                 </tr>
                 <tr>                  
                     <th >1</th>
                     <th><input type="radio" name="actuador1" value= "A" onclick="activar_actuador('1')" id="act1"><br></th>
                     <th><input type="radio" name="actuador1" value= "A" onclick="desactivar_actuador('1')" id="dact1"><br></th>
-                    <th><p id="act1_status"> </p></th>                                       
+                    <th>
+                        <div class="led-box">
+
+                        </div>
+                        <div class="led-green" id="act1_status_on"></div>
+                        <div class="led-red" id="act1_status_off"></div>
+                    </th>
                 </tr>
                 <tr>
                     <th>2</th>
                     <th><input type="radio" name="actuador2" value= "A" onclick="activar_actuador('2')" id="act2"><br></th>
                     <th><input type="radio" name="actuador2" value= "A" onclick="desactivar_actuador('2')" id="dact2"><br></th>                    
-                    <th><p id="act2_status"> </p></th>   
+                    <th>
+                        <div class="led-green" id="act2_status_on"></div>
+                        <div class="led-red" id="act2_status_off"></div>
+                    </th>   
                 </tr>                                
 
             </table>
@@ -87,7 +99,10 @@
             </div>        
         </center>
     </div>
-    
+    <center>
+        <button onClick="logout()">Cerrar sesión</button>
+    </center>
+        
     <script src="js/dashboard.js"></script>
 
     <script src="jquery/jquery.min.js"></script>

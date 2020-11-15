@@ -18,9 +18,8 @@ $.post({
     data: JSON.stringify(datau),
     contentType: "application/json",
     success: function(datosEntrada,status) {
-        if(datosEntrada === "OK") {
-            //window.location.replace("/home");
-            //alert("Se ha iniciado sesión correctamente");
+        if(datosEntrada === "OK") {            
+            sessionStorage.setItem("user", datau.user);
             window.location.replace('/dashboard');
             
         }else

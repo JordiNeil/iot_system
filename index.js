@@ -145,11 +145,23 @@ app.post("/actuadores", function(request, response){
     let data = request.body;
     console.log("comando recibido:");
     console.log(JSON.stringify(data));
-    con.query('INSERT INTO actuadores (`actuador`, `estado`) VALUES (?,?)', [data.sensor, data.status], function(error, results, fields){
+    con.query('INSERT INTO actuadores (`actuador`, `estado`) VALUES (?,?)', [data.actuador, data.status], function(error, results, fields){        
+    });
+    response.status(200);
+    response.send("OK");
+});
+
+app.post("/set_sensors", function(request, response){
+    let data = request.body;
+    console.log("comando recibido:");
+    console.log(JSON.stringify(data));
+    con.query('INSERT INTO sensores (`sensor`, `temp`, `hum`) VALUES (?,?,?)', [data.sensor, data.temp, data.hum], function(error, results, fields){    
+        response.status(200);
+        response.send("Datos actualizados correctamente");
     });
 });
 
 //Final
-app.listen(3002, function() {
+app.listen(80, function() {
     console.log("servidor iniciado")
 });
