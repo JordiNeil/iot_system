@@ -10,19 +10,18 @@ var hum4 = "0";
 
 
 var datau = {
-    p1: '',
-    p2: '',
-    p3: '',
-    p4: ''
+    sensor:'',
+    status:''
 };
 
 function activar_actuador(id){
+    datau.sensor = id;
+    datau.status = 1;
+    alert("Sensor "+String(id)+" activado");
     $.post({
         url: "/actuadores",
-        data: JSON.stringify({
-            act: String(id),
-            estado: String(true)
-        }),
+        data: JSON.stringify(datau),
+        contentType: "application/json",
         success: function(datosEntrada, status){
             document.getElementById("act"+id+"_status").innerHTML = "ON";
         }
@@ -30,12 +29,13 @@ function activar_actuador(id){
 };
 
 function desactivar_actuador(id){
+    datau.sensor = String(id);
+    datau.status = String(0);
+    alert("Sensor "+String(id)+" desactivado");
     $.post({
         url: "/actuadores",
-        data: JSON.stringify({
-            act: String(id),
-            estado: String(false)
-        }),
+        data: JSON.stringify(datau),
+        contentType: "application/json",
         success: function(datosEntrada, status){
             document.getElementById("act"+id+"_status").innerHTML = "OFF";
         }
@@ -59,14 +59,11 @@ document.getElementById('reload_data').addEventListener('click', function(){
     });
 });
 
-document.getElementById('b2').addEventListener('click', function() {
-    datau.p1 = pregunta1;
-    datau.p2 = pregunta2;
-    datau.p3 = pregunta3;
-    datau.p4 = pregunta4;
+document.getElementById('update_actuators').addEventListener('click', function() {
+    datau.sensor 
     console.log(datau);
     $.post({
-        url: "/nota",
+        url: "/actuadores",
         data: JSON.stringify(datau),
         contentType: "application/json",
         success: function(datosEntrada,status) {

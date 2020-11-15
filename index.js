@@ -144,8 +144,8 @@ app.post("/nota", function(request, response){
 app.post("/actuadores", function(request, response){
     let data = request.body;
     console.log("comando recibido:");
-    console.log(data);
-    con.query('INSERT INTO actuadores (`actuador`, `estado`) VALUES (?,?)', [data.act, data.estado], function(error, results, fields){
+    console.log(JSON.stringify(data));
+    con.query('INSERT INTO actuadores (`actuador`, `estado`) VALUES (?,?)', [data.sensor, data.status], function(error, results, fields){
     });
 });
 
