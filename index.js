@@ -9,9 +9,9 @@ app.use(express.static("public"));
 var mysql = require('mysql');
 
 var con = mysql.createConnection({
-    host: 'localhost',
+    host: 'iot.crcwqghvto1y.us-east-2.rds.amazonaws.com',
     user: 'root',
-    password: '123456',
+    password: '12345678',
     database: 'iot'    
 });
 var sensors_data = {
@@ -21,6 +21,15 @@ var sensors_data = {
     s4: ''
 };
 con.connect();
+
+app.get("/check", function(req, response){
+    response.writeHead(200, {
+        'Content-Type': 'text/plain',
+        'Content-Length': 2
+    });
+    response.write('OK');
+    response.end();
+});
 
 app.get("/", function(request, response){
     response.status(200); // respondo status
@@ -38,7 +47,7 @@ app.get("/dashboard", function(request, response){
 app.get("/sensors", function(request, response){
     if (flag_log === 1){
         con.query('SELECT sensor, temp, hum FROM iot.sensores WHERE id in ('+
-            'SELECT MAX(id) FROM sensores GROUP BY sensor)', function(error, results, fields){
+            'SELECT MAX(id) FROM sensores GROUP BY sensor) ORDER BY sensor', function(error, results, fields){
             var data_db = JSON.parse(JSON.stringify(results));
             console.log(data_db[0]);
             if (data_db[0]){
